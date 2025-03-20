@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tratamentos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #cce7ff, #6699cc, #336699);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: auto;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        h2 {
+            color: #336699;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            max-width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        th {
+            background: linear-gradient(to right, #336699, #6699cc);
+            color: white;
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #cce7ff;
+            transition: 0.3s;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: linear-gradient(to right, #336699, #6699cc);
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #1e4d7b;
+            transform: scale(1.05);
+            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-voltar {
+            background: #ff6666;
+        }
+
+        .btn-voltar:hover {
+            background: #cc3333;
+        }
+
+        .btn-menu {
+            background: linear-gradient(to right, #0073e6, #3399ff);
+        }
+
+        .btn-menu:hover {
+            background: #005bb5;
+        }
+
+        .btn-editar {
+            background: #f0ad4e;
+            padding: 8px 12px;
+            font-size: 14px;
+            margin: 5px;
+            border-radius: 6px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-editar:hover {
+            background: #d8963e;
+        }
+
+        .btn-excluir {
+            background: #ff4d4d;
+            padding: 8px 12px;
+            font-size: 14px;
+            margin: 5px;
+            border-radius: 6px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+
+        .btn-excluir:hover {
+            background: #cc3333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Lista de Tratamentos</h2>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Descrição</th>
+                <th>Tipo</th>
+                <th>Custo (R$)</th>
+                <th>Ações</th>
+            </tr>
+            <tr th:each="tratamento : ${tratamentos}">
+                <td th:text="${tratamento.id}"></td>
+                <td th:text="${tratamento.descricao}"></td>
+                <td th:text="${tratamento.tipo}"></td>
+                <td th:text="${tratamento.custo}"></td>
+                <td>
+                    <a th:href="@{/tratamentos/editar/{id}(id=${tratamento.id})}" class="btn btn-editar"> Editar</a>
+
+                    <form th:action="@{/tratamentos/excluir/{id}(id=${tratamento.id})}" method="post">
+                        <input type="hidden" name="_method" value="DELETE"/>
+                        <button type="submit" class="btn btn-excluir" onclick="return confirm('Tem certeza que deseja excluir este tratamento?')">
+                            Excluir
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="button-container">
+        <a href="/tratamentos/cadastrar" class="btn">Cadastrar Novo Tratamento</a>
+        <a href="/tratamentos" class="btn btn-voltar">Voltar</a>
+        <a href="/principal" class="btn btn-menu">🏠 Menu Principal</a>
+    </div>
+</div>
+</body>
+</html>

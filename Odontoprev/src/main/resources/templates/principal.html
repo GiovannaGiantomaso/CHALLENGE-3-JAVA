@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Odontológico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #cce7ff, #6699cc, #336699);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 450px;
+        }
+
+        .logo {
+            width: 200px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+        }
+
+        h2 {
+            color: #2c5787;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu a {
+            padding: 14px;
+            background: linear-gradient(120deg, #336699, #6699cc);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu a:hover {
+            background: linear-gradient(120deg, #2b527f, #518dc1);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        footer {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="https://img.freepik.com/vetores-gratis/cor-azul-dos-dentes-da-caligrafia_78370-4809.jpg?w=740" alt="Odontologia" class="logo">
+    <h2>Sistema Odontológico</h2>
+    <div class="menu">
+        <a href="/pacientes"><i class="fa-solid fa-user"></i> Gerenciar Pacientes</a>
+        <a href="/tratamentos"><i class="fa-solid fa-tooth"></i> Gerenciar Tratamentos</a>
+        <a href="/relatorios/pacientes-tratamentos"><i class="fa-solid fa-file-medical"></i> Pacientes e Tratamentos</a>
+        <a href="/relatorios/gastos-pacientes"><i class="fa-solid fa-money-bill-wave"></i> Gastos por Paciente</a>
+        <a href="/auditoria"><i class="fa-solid fa-clipboard-list"></i> Registros de Auditoria</a>
+    </div>
+    <footer>
+        © 2025 Sistema Odontológico - Todos os direitos reservados.
+    </footer>
+</div>
+</body>
+</html>
