@@ -2,7 +2,7 @@
 ## OdontoPrev - Sistema de Gestão Odontológica
 
 ## Sobre o Projeto
-OdontoPrev é um sistema web monolítico desenvolvido para gestão de sistemas odontológicos, permitindo o cadastro, gerenciamento e auditoria de pacientes e tratamentos odontológicos.
+OdontoPrev é um sistema web desenvolvido para gestão de sistemas odontológicos, permitindo o cadastro, gerenciamento e auditoria de pacientes e tratamentos odontológicos.
 
 Esse sistema foi desenvolvido como parte de um desafio acadêmico com o objetivo de aprimorar habilidades em desenvolvimento backend com Spring Boot, além de criar uma interface interativa usando Thymeleaf.
 
