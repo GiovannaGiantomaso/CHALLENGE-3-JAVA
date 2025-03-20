@@ -146,7 +146,7 @@ logging.level.org.hibernate.SQL=DEBUG
 
 logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 
-DIAGRAMA:
+DIAGRAMA (DAR ZOOM PARA VISUALIZAR):
 
 ![diagrama-javaa](https://github.com/user-attachments/assets/4de52fbe-006d-4bf5-a670-36ab18f634ff)
 
