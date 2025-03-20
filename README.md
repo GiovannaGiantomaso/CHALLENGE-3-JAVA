@@ -145,3 +145,8 @@ spring.jpa.properties.hibernate.format_sql=true
 logging.level.org.hibernate.SQL=DEBUG
 
 logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+
+DIAGRAMA:
+
+![diagrama-javaa](https://github.com/user-attachments/assets/4de52fbe-006d-4bf5-a670-36ab18f634ff)
+
