@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Paciente</title>
     <style>
-
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(to right, #cce7ff, #6699cc, #336699);
@@ -141,7 +140,12 @@
             box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.3);
         }
 
-        /* Responsividade */
+        #erroCampos {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+
         @media (max-width: 500px) {
             .container {
                 padding: 20px;
@@ -222,6 +226,7 @@
         </div>
 
         <button type="submit" id="btnSalvar" disabled>Salvar Paciente</button>
+        <p id="erroCampos">Preencha todos os campos corretamente.</p>
     </form>
 
     <div class="button-container">
@@ -234,7 +239,15 @@
     document.getElementById("formPaciente").addEventListener("input", function () {
         const form = this;
         const button = document.getElementById("btnSalvar");
-        button.disabled = !form.checkValidity();
+        const mensagemErro = document.getElementById("erroCampos");
+
+        if (form.checkValidity()) {
+            button.disabled = false;
+            mensagemErro.style.display = "none";
+        } else {
+            button.disabled = true;
+            mensagemErro.style.display = "block";
+        }
     });
 </script>
 
