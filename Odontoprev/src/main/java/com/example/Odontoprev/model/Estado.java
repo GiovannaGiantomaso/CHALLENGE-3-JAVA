@@ -1,10 +1,18 @@
 package com.example.Odontoprev.model;
+
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 @Entity
 @Table(name = "ESTADO_PACIENTE")
-public class Estado {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Estado implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ESTADO_PACIENTE")
@@ -18,35 +26,4 @@ public class Estado {
     @ManyToOne
     @JoinColumn(name = "ID_PAIS")
     private Pais pais;
-
-    public Estado() {}
-
-    public Estado(String nome, Pais pais) {
-        this.nome = nome;
-        this.pais = pais;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Pais getPais() {
-        return pais;
-    }
-
-    public void setPais(Pais pais) {
-        this.pais = pais;
-    }
 }
