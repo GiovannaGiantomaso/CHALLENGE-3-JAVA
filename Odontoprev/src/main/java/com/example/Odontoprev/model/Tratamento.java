@@ -1,10 +1,16 @@
 package com.example.Odontoprev.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "TRATAMENTO")
 @SequenceGenerator(name = "SEQ_TRATAMENTO", sequenceName = "SEQ_TRATAMENTO", allocationSize = 1)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Tratamento {
 
     @Id
@@ -20,24 +26,4 @@ public class Tratamento {
 
     @Column(name = "CUSTO", nullable = false)
     private Double custo;
-
-    public Tratamento() {}
-
-    public Tratamento(String descricao, String tipo, Double custo) {
-        this.descricao = descricao;
-        this.tipo = tipo;
-        this.custo = custo;
-    }
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public String getDescricao() { return descricao; }
-    public void setDescricao(String descricao) { this.descricao = descricao; }
-
-    public String getTipo() { return tipo; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
-
-    public Double getCusto() { return custo; }
-    public void setCusto(Double custo) { this.custo = custo; }
 }
