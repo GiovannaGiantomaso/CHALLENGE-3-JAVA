@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Pacientes</title>
+    <title th:text="#{msg_lista_pacientes}">Lista de Pacientes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -164,21 +164,21 @@
 <body>
 
 <div class="container">
-    <h2>Lista de Pacientes</h2>
+    <h2 th:text="#{msg_lista_pacientes}">Lista de Pacientes</h2>
 
-    <div th:if="${#lists.isEmpty(pacientes)}" style="color: red; font-weight: bold; margin-bottom: 20px;">
+    <div th:if="${#lists.isEmpty(pacientes)}" style="color: red; font-weight: bold; margin-bottom: 20px;" th:text="#{msg_nenhum_paciente}">
         Nenhum paciente cadastrado no momento.
     </div>
 
     <table th:if="${not #lists.isEmpty(pacientes)}">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Data de Nascimento</th>
-            <th>Telefone</th>
-            <th>E-mail</th>
-            <th>Ações</th>
+            <th th:text="#{msg_id}">ID</th>
+            <th th:text="#{msg_nome}">Nome</th>
+            <th th:text="#{msg_data_nascimento}">Data de Nascimento</th>
+            <th th:text="#{msg_telefone}">Telefone</th>
+            <th th:text="#{msg_email}">E-mail</th>
+            <th th:text="#{msg_acoes}">Ações</th>
         </tr>
         </thead>
         <tbody>
@@ -190,17 +190,21 @@
             <td th:text="${paciente.email}"></td>
             <td>
                 <div class="btn-container">
-                    <a th:href="@{/pacientes/editar/{id}(id=${paciente.id})}" class="btn btn-editar"> Editar</a>
+                    <a th:href="@{/pacientes/editar/{id}(id=${paciente.id})}" class="btn btn-editar" th:text="#{msg_editar}">Editar</a>
 
                     <form th:action="@{/pacientes/excluir/{id}(id=${paciente.id})}" method="post">
                         <input type="hidden" name="_method" value="delete"/>
-                        <button type="submit" class="btn btn-excluir" onclick="return confirm('Tem certeza que deseja excluir este paciente?')">
-                             Excluir
+                        <button type="submit" class="btn btn-excluir"
+                                onclick="return confirm('Tem certeza que deseja excluir este paciente?')"
+                                th:text="#{msg_excluir}">
+                            Excluir
                         </button>
                     </form>
 
-                    <a th:href="@{/pacientes/adicionar-tratamento/{id}(id=${paciente.id})}" class="btn btn-tratamento">
-                         Adicionar Tratamento
+                    <a th:href="@{/pacientes/adicionar-tratamento/{id}(id=${paciente.id})}"
+                       class="btn btn-tratamento"
+                       th:text="#{msg_adicionar_tratamento}">
+                        Adicionar Tratamento
                     </a>
                 </div>
             </td>
@@ -209,9 +213,9 @@
     </table>
 
     <div class="button-container">
-        <a href="/pacientes/cadastrar" class="btn-adicionar">Adicionar Paciente</a>
-        <a href="/pacientes" class="btn-voltar">Voltar</a>
-        <a href="/principal" class="btn-menu">🏠 Menu Principal</a>
+        <a href="/pacientes/cadastrar" class="btn-adicionar" th:text="#{msg_adicionar_paciente}">Adicionar Paciente</a>
+        <a href="/pacientes" class="btn-voltar" th:text="#{msg_voltar}">Voltar</a>
+        <a href="/principal" class="btn-menu" th:text="#{msg_menu_principal}">Menu Principal</a>
     </div>
 </div>
 

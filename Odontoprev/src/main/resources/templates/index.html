@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OdontoPrev - Gerenciamento Odontológico</title>
+    <title th:text="#{msg_odontoprev_gerenciamento_odontologico_1}">OdontoPrev - Gerenciamento Odontológico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
@@ -23,6 +23,22 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             text-align: center;
             width: 550px;
+        }
+
+        .lang-switch {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .lang-switch a {
+            text-decoration: none;
+            color: #336699;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        .lang-switch a:hover {
+            text-decoration: underline;
         }
 
         .logo {
@@ -76,15 +92,26 @@
 </head>
 <body>
 <div class="container">
-    <img class="logo" src="https://img.freepik.com/vetores-gratis/cor-azul-dos-dentes-da-caligrafia_78370-4809.jpg?w=740" alt="Logo OdontoCare">
-    <h1>OdontoPrev</h1>
-    <p class="intro">Gerencie pacientes e tratamentos com eficiência e transforme a qualidade do seu atendimento odontológico.</p>
-    <div class="buttons">
-        <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Fazer Login</a>
-        <a href="/register"><i class="fa-solid fa-user-plus"></i> Cadastre-se</a>
+    <div class="lang-switch">
+        <a href="?lang=pt">🇧🇷 PT</a> |
+        <a href="?lang=en">🇺🇸 EN</a> |
+        <a href="?lang=es">🇪🇸 ES</a>
     </div>
+
+    <img class="logo" src="https://img.freepik.com/vetores-gratis/cor-azul-dos-dentes-da-caligrafia_78370-4809.jpg?w=740" alt="Logo OdontoCare">
+
+    <h1 th:text="#{msg_odontoprev_3}">OdontoPrev</h1>
+    <p class="intro" th:text="#{msg_gerencie_pacientes_e_tratamentos_4}">
+        Gerencie pacientes e tratamentos com eficiência e transforme a qualidade do seu atendimento odontológico.
+    </p>
+
+    <div class="buttons">
+        <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> <span th:text="#{msg_fazer_login_5}">Fazer Login</span></a>
+        <a href="/register"><i class="fa-solid fa-user-plus"></i> <span th:text="#{msg_cadastre_se_6}">Cadastre-se</span></a>
+    </div>
+
     <footer>
-        &copy; 2025 OdontoPrev. Todos os direitos reservados.
+        &copy; 2025 OdontoPrev. <span th:text="#{msg_todos_os_direitos_reservados_14}">Todos os direitos reservados.</span>
     </footer>
 </div>
 </body>

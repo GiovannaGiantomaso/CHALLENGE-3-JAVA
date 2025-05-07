@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Odontológico</title>
+    <title th:text="#{msg_sistema_odontol_gico_8}">Sistema Odontológico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
@@ -23,6 +23,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             text-align: center;
             width: 450px;
+            position: relative;
         }
 
         .logo {
@@ -61,6 +62,24 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
         }
 
+        .language-switch {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 13px;
+        }
+
+        .language-switch a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #336699;
+            font-weight: bold;
+        }
+
+        .language-switch a:hover {
+            text-decoration: underline;
+        }
+
         footer {
             margin-top: 25px;
             font-size: 13px;
@@ -70,17 +89,25 @@
 </head>
 <body>
 <div class="container">
-    <img src="https://img.freepik.com/vetores-gratis/cor-azul-dos-dentes-da-caligrafia_78370-4809.jpg?w=740" alt="Odontologia" class="logo">
-    <h2>Sistema Odontológico</h2>
-    <div class="menu">
-        <a href="/pacientes"><i class="fa-solid fa-user"></i> Gerenciar Pacientes</a>
-        <a href="/tratamentos"><i class="fa-solid fa-tooth"></i> Gerenciar Tratamentos</a>
-        <a href="/relatorios/pacientes-tratamentos"><i class="fa-solid fa-file-medical"></i> Pacientes e Tratamentos</a>
-        <a href="/relatorios/gastos-pacientes"><i class="fa-solid fa-money-bill-wave"></i> Gastos por Paciente</a>
-        <a href="/auditoria"><i class="fa-solid fa-clipboard-list"></i> Registros de Auditoria</a>
+    <div class="language-switch">
+        <a href="?lang=pt">BR PT</a> |
+        <a href="?lang=en">US EN</a> |
+        <a href="?lang=es">ES ES</a>
     </div>
+
+    <img src="https://img.freepik.com/vetores-gratis/cor-azul-dos-dentes-da-caligrafia_78370-4809.jpg?w=740" alt="Odontologia" class="logo">
+    <h2 th:text="#{msg_sistema_odontol_gico_8}">Sistema Odontológico</h2>
+
+    <div class="menu">
+        <a href="/pacientes"><i class="fa-solid fa-user"></i> <span th:text="#{msg_gerenciar_pacientes_9}">Gerenciar Pacientes</span></a>
+        <a href="/tratamentos"><i class="fa-solid fa-tooth"></i> <span th:text="#{msg_gerenciar_tratamentos_10}">Gerenciar Tratamentos</span></a>
+        <a href="/relatorios/pacientes-tratamentos"><i class="fa-solid fa-file-medical"></i> <span th:text="#{msg_pacientes_e_tratamentos_11}">Pacientes e Tratamentos</span></a>
+        <a href="/relatorios/gastos-pacientes"><i class="fa-solid fa-money-bill-wave"></i> <span th:text="#{msg_gastos_por_paciente_12}">Gastos por Paciente</span></a>
+        <a href="/auditoria"><i class="fa-solid fa-clipboard-list"></i> <span th:text="#{msg_registros_de_auditoria_13}">Registros de Auditoria</span></a>
+    </div>
+
     <footer>
-        © 2025 Sistema Odontológico - Todos os direitos reservados.
+        © 2025 Sistema Odontológico - <span th:text="#{msg_todos_os_direitos_reservados_14}">Todos os direitos reservados.</span>
     </footer>
 </div>
 </body>

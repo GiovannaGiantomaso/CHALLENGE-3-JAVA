@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Tratamento ao Paciente</title>
+    <title th:text="#{msg_adicionar_tratamento_paciente}">Adicionar Tratamento ao Paciente</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -107,20 +107,21 @@
     </style>
 </head>
 <body>
+
 <div class="container">
-    <h2>Adicionar Tratamento ao Paciente</h2>
+    <h2 th:text="#{msg_adicionar_tratamento_paciente}">Adicionar Tratamento ao Paciente</h2>
     <form action="/pacientes/adicionar-tratamento" method="post">
         <input type="hidden" name="idPaciente" th:value="${paciente.id}">
 
         <div class="form-group">
-            <label>Paciente:</label>
+            <label th:text="#{msg_paciente}">Paciente:</label>
             <input type="text" th:value="${paciente.nome}" disabled>
         </div>
 
         <div class="form-group">
-            <label for="idTratamento">Selecione o Tratamento:</label>
+            <label for="idTratamento" th:text="#{msg_selecione_tratamento}">Selecione o Tratamento:</label>
             <select name="idTratamento" id="idTratamento" required>
-                <option value="">-- Escolha um Tratamento --</option>
+                <option value="" th:text="#{msg_escolha_um_tratamento}">-- Escolha um Tratamento --</option>
                 <option th:each="tratamento : ${tratamentos}"
                         th:value="${tratamento.id}"
                         th:text="${tratamento.descricao}"></option>
@@ -128,21 +129,21 @@
         </div>
 
         <div class="form-group">
-            <label for="dataTratamento">Data do Tratamento:</label>
+            <label for="dataTratamento" th:text="#{msg_data_tratamento}">Data do Tratamento:</label>
             <input type="date" name="dataTratamento" id="dataTratamento" required>
         </div>
 
         <div class="form-group">
-            <label for="observacoes">Observações:</label>
+            <label for="observacoes" th:text="#{msg_observacoes}">Observações:</label>
             <input type="text" name="observacoes" id="observacoes" required>
         </div>
 
-        <button type="submit">Adicionar Tratamento</button>
+        <button type="submit" th:text="#{msg_adicionar_tratamento}">Adicionar Tratamento</button>
     </form>
 
     <div class="button-container">
-        <a href="javascript:history.back()" class="btn btn-voltar">Voltar</a>
-        <a href="/principal" class="btn btn-menu">🏠 Menu Principal</a>
+        <a href="javascript:history.back()" class="btn btn-voltar" th:text="#{msg_voltar}">Voltar</a>
+        <a href="/principal" class="btn btn-menu" th:text="#{msg_menu_principal}">Menu Principal</a>
     </div>
 </div>
 </body>

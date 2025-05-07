@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório de Pacientes e Tratamentos</title>
+    <title th:text="#{msg_relatorio_pacientes_tratamentos}">Relatório de Pacientes e Tratamentos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -74,17 +74,17 @@
 </head>
 <body>
 <div class="container">
-    <h2>Relatório de Pacientes e Tratamentos</h2>
+    <h2 th:text="#{msg_relatorio_pacientes_tratamentos}">Relatório de Pacientes e Tratamentos</h2>
     <div style="overflow-x:auto;">
         <table>
             <thead>
             <tr>
-                <th>ID Paciente</th>
-                <th>Nome</th>
-                <th>ID Tratamento</th>
-                <th>Descrição</th>
-                <th>Data</th>
-                <th>Observações</th>
+                <th th:text="#{msg_id_paciente}">ID Paciente</th>
+                <th th:text="#{msg_nome}">Nome</th>
+                <th th:text="#{msg_id_tratamento}">ID Tratamento</th>
+                <th th:text="#{msg_descricao}">Descrição</th>
+                <th th:text="#{msg_data}">Data</th>
+                <th th:text="#{msg_observacoes}">Observações</th>
             </tr>
             </thead>
             <tbody>
@@ -99,7 +99,7 @@
             </tbody>
         </table>
     </div>
-    <a href="/principal" class="btn">🏠 Menu Principal</a>
+    <a href="/principal" class="btn" th:text="#{msg_menu_principal}">Menu Principal</a>
 </div>
 </body>
 </html>

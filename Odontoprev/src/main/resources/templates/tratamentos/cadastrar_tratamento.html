@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Tratamento</title>
+    <title th:text="#{msg_cadastrar_tratamento}">Cadastrar Tratamento</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -118,30 +118,30 @@
 </head>
 <body>
 <div class="container">
-    <h2>Cadastrar Novo Tratamento</h2>
+    <h2 th:text="#{msg_cadastrar_novo_tratamento}">Cadastrar Novo Tratamento</h2>
     <form id="formTratamento" action="/tratamentos/salvar" method="post">
         <div class="form-group">
-            <label>Descrição:</label>
+            <label th:text="#{msg_descricao}">Descrição:</label>
             <input type="text" name="descricao" required>
         </div>
 
         <div class="form-group">
-            <label>Tipo:</label>
+            <label th:text="#{msg_tipo}">Tipo:</label>
             <input type="text" name="tipo" required>
         </div>
 
         <div class="form-group">
-            <label>Custo:</label>
+            <label th:text="#{msg_custo}">Custo:</label>
             <input type="number" name="custo" step="0.01" required>
         </div>
 
-        <button type="submit" id="btnSalvar" disabled>Salvar Tratamento</button>
-        <p id="erroCampos">Preencha todos os campos corretamente.</p>
+        <button type="submit" id="btnSalvar" disabled th:text="#{msg_salvar_tratamento}">Salvar Tratamento</button>
+        <p id="erroCampos" th:text="#{msg_preencha_campos_corretamente}">Preencha todos os campos corretamente.</p>
     </form>
 
     <div class="button-container">
-        <a href="/tratamentos" class="btn btn-voltar">Voltar</a>
-        <a href="/principal" class="btn btn-menu">🏠 Menu Principal</a>
+        <a href="/tratamentos" class="btn btn-voltar" th:text="#{msg_voltar}">Voltar</a>
+        <a href="/principal" class="btn btn-menu" th:text="#{msg_menu_principal}">Menu Principal</a>
     </div>
 </div>
 

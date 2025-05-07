@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório de Gastos por Paciente</title>
+    <title th:text="#{msg_relatorio_gastos_paciente}">Relatório de Gastos por Paciente</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -73,15 +73,15 @@
 </head>
 <body>
 <div class="container">
-    <h2>Relatório de Gastos por Paciente</h2>
+    <h2 th:text="#{msg_relatorio_gastos_paciente}">Relatório de Gastos por Paciente</h2>
     <div style="overflow-x:auto;">
         <table>
             <thead>
             <tr>
-                <th>ID Paciente</th>
-                <th>Nome</th>
-                <th>Total de Tratamentos</th>
-                <th>Custo Total</th>
+                <th th:text="#{msg_id_paciente}">ID Paciente</th>
+                <th th:text="#{msg_nome}">Nome</th>
+                <th th:text="#{msg_total_tratamentos}">Total de Tratamentos</th>
+                <th th:text="#{msg_custo_total}">Custo Total</th>
             </tr>
             </thead>
             <tbody>
@@ -94,7 +94,7 @@
             </tbody>
         </table>
     </div>
-    <a href="/principal" class="btn">🏠 Menu Principal</a>
+    <a href="/principal" class="btn" th:text="#{msg_menu_principal}">Menu Principal</a>
 </div>
 </body>
 </html>

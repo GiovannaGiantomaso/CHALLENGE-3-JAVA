@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Paciente</title>
+    <title th:text="#{msg_editar_paciente}">Editar Paciente</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -72,46 +72,46 @@
 <body>
 
 <div class="container">
-    <h2>Editar Paciente</h2>
+    <h2 th:text="#{msg_editar_paciente}">Editar Paciente</h2>
 
     <form th:action="@{/pacientes/atualizar}" th:object="${paciente}" method="post">
         <input type="hidden" th:field="*{id}" />
 
-        <label>Nome:</label>
+        <label th:text="#{msg_nome}">Nome:</label>
         <input type="text" th:field="*{nome}" required />
 
-        <label>Data de Nascimento:</label>
+        <label th:text="#{msg_data_nascimento}">Data de Nascimento:</label>
         <input type="date" th:field="*{dataNascimento}" required />
 
-        <label>Telefone:</label>
+        <label th:text="#{msg_telefone}">Telefone:</label>
         <input type="text" th:field="*{telefone}" required />
 
-        <label>E-mail:</label>
+        <label th:text="#{msg_email}">E-mail:</label>
         <input type="email" th:field="*{email}" required />
 
-        <h3>Endereço</h3>
+        <h3 th:text="#{msg_endereco}">Endereço</h3>
 
-        <label>CEP:</label>
+        <label th:text="#{msg_cep}">CEP:</label>
         <input type="text" name="cep" th:value="*{endereco?.cep}" required />
 
-        <label>Número:</label>
+        <label th:text="#{msg_numero}">Número:</label>
         <input type="text" name="numero" th:value="*{endereco?.numero}" required />
 
-        <label>Bairro:</label>
+        <label th:text="#{msg_bairro}">Bairro:</label>
         <input type="text" name="bairro" th:value="*{endereco?.bairro?.nome}" required />
 
-        <label>Cidade:</label>
+        <label th:text="#{msg_cidade}">Cidade:</label>
         <input type="text" name="cidade" th:value="*{endereco?.bairro?.cidade?.nome}" required />
 
-        <label>Estado:</label>
+        <label th:text="#{msg_estado}">Estado:</label>
         <input type="text" name="estado" th:value="*{endereco?.bairro?.cidade?.estado?.nome}" required />
 
-        <label>País:</label>
+        <label th:text="#{msg_pais}">País:</label>
         <input type="text" name="pais" th:value="*{endereco?.bairro?.cidade?.estado?.pais?.nome}" required />
 
         <div class="btn-container">
-            <button type="submit" class="btn btn-save">Salvar Alterações</button>
-            <a href="/pacientes/listar" class="btn btn-back">Voltar</a>
+            <button type="submit" class="btn btn-save" th:text="#{msg_salvar_alteracoes}">Salvar Alterações</button>
+            <a href="/pacientes/listar" class="btn btn-back" th:text="#{msg_voltar}">Voltar</a>
         </div>
     </form>
 </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registros de Auditoria</title>
+    <title th:text="#{msg_registros_de_auditoria}">Registros de Auditoria</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -101,29 +101,29 @@
 </head>
 <body>
 <div class="container">
-    <h2>Registros de Auditoria</h2>
+    <h2 th:text="#{msg_registros_de_auditoria}">Registros de Auditoria</h2>
 
     <form action="/auditoria" method="get">
-        <label for="tabela">Filtrar por tabela:</label>
+        <label for="tabela" th:text="#{msg_filtrar_por_tabela}">Filtrar por tabela:</label>
         <select name="tabela" id="tabela">
-            <option value="">Todas</option>
-            <option value="PACIENTE">Paciente</option>
-            <option value="TRATAMENTO">Tratamento</option>
-            <option value="SINISTRO">Sinistro</option>
+            <option value="" th:text="#{msg_todas}">Todas</option>
+            <option value="PACIENTE" th:text="#{msg_paciente}">Paciente</option>
+            <option value="TRATAMENTO" th:text="#{msg_tratamento}">Tratamento</option>
+            <option value="SINISTRO" th:text="#{msg_sinistro}">Sinistro</option>
         </select>
-        <button type="submit">Filtrar</button>
+        <button type="submit" th:text="#{msg_filtrar}">Filtrar</button>
     </form>
 
     <div style="overflow-x:auto;">
         <table>
             <thead>
             <tr>
-                <th>ID Auditoria</th>
-                <th>Tabela Afetada</th>
-                <th>Operação</th>
-                <th>Usuário</th>
-                <th>Data</th>
-                <th>ID Registro</th>
+                <th th:text="#{msg_id_auditoria}">ID Auditoria</th>
+                <th th:text="#{msg_tabela_afetada}">Tabela Afetada</th>
+                <th th:text="#{msg_operacao}">Operação</th>
+                <th th:text="#{msg_usuario}">Usuário</th>
+                <th th:text="#{msg_data}">Data</th>
+                <th th:text="#{msg_id_registro}">ID Registro</th>
             </tr>
             </thead>
             <tbody>
@@ -139,7 +139,7 @@
         </table>
     </div>
 
-    <a href="/principal" class="btn">🏠 Menu Principal</a>
+    <a href="/principal" class="btn" th:text="#{msg_menu_principal}">Menu Principal</a>
 </div>
 </body>
 </html>

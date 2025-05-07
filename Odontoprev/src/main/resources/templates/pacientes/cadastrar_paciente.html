@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Paciente</title>
+    <title th:text="#{msg_cadastrar_paciente}">Cadastrar Paciente</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -160,78 +161,80 @@
     </style>
 </head>
 <body>
+
 <div class="container">
-    <h2>Cadastrar Novo Paciente</h2>
+    <h2 th:text="#{msg_cadastrar_novo_paciente}">Cadastrar Novo Paciente</h2>
     <form id="formPaciente" action="/pacientes/salvar" method="post">
         <div class="form-group">
-            <label>Nome:</label>
+            <label th:text="#{msg_nome}">Nome:</label>
             <input type="text" name="nome" required>
         </div>
 
         <div class="form-group">
-            <label>Data de Nascimento:</label>
+            <label th:text="#{msg_data_nascimento}">Data de Nascimento:</label>
             <input type="date" name="dataNascimento" required>
         </div>
 
         <div class="form-group">
-            <label>Gênero:</label>
+            <label th:text="#{msg_genero}">Gênero:</label>
             <select name="idGenero" required>
-                <option value="" disabled selected>Selecione...</option>
-                <option value="7">Feminino</option>
-                <option value="8">Masculino</option>
-                <option value="11">Outro</option>
+                <option value="" disabled selected th:text="#{msg_selecione}">Selecione...</option>
+                <option value="7" th:text="#{msg_feminino}">Feminino</option>
+                <option value="8" th:text="#{msg_masculino}">Masculino</option>
+                <option value="11" th:text="#{msg_outro}">Outro</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label>Telefone:</label>
-            <input type="tel" name="telefone" pattern="\d{10,11}" placeholder="Apenas números" required>
+            <label th:text="#{msg_telefone}">Telefone:</label>
+            <input type="tel" name="telefone" pattern="\d{10,11}" th:placeholder="#{msg_apenas_numeros}" required>
         </div>
 
         <div class="form-group">
-            <label>E-mail:</label>
+            <label th:text="#{msg_email}">E-mail:</label>
             <input type="email" name="email" required>
         </div>
 
-        <h3>Endereço</h3>
+        <h3 th:text="#{msg_endereco}">Endereço</h3>
+
 
         <div class="form-group">
-            <label>CEP:</label>
-            <input type="text" name="cep" pattern="\d{8}" placeholder="Apenas números" required>
+            <label th:text="#{msg_cep}">CEP:</label>
+            <input type="text" name="cep" pattern="\d{8}" th:placeholder="#{msg_apenas_numeros}" required>
         </div>
 
         <div class="form-group">
-            <label>Número:</label>
+            <label th:text="#{msg_numero}">Número:</label>
             <input type="text" name="numero" required>
         </div>
 
         <div class="form-group">
-            <label>Bairro:</label>
+            <label th:text="#{msg_bairro}">Bairro:</label>
             <input type="text" name="bairro" required>
         </div>
 
         <div class="form-group">
-            <label>Cidade:</label>
+            <label th:text="#{msg_cidade}">Cidade:</label>
             <input type="text" name="cidade" required>
         </div>
 
         <div class="form-group">
-            <label>Estado:</label>
+            <label th:text="#{msg_estado}">Estado:</label>
             <input type="text" name="estado" required>
         </div>
 
         <div class="form-group">
-            <label>País:</label>
+            <label th:text="#{msg_pais}">País:</label>
             <input type="text" name="pais" required>
         </div>
 
-        <button type="submit" id="btnSalvar" disabled>Salvar Paciente</button>
-        <p id="erroCampos">Preencha todos os campos corretamente.</p>
+        <button type="submit" id="btnSalvar" disabled th:text="#{msg_salvar_paciente}">Salvar Paciente</button>
+        <p id="erroCampos" th:text="#{msg_preencha_campos_corretamente}" style="display: none;">Preencha todos os campos corretamente.</p>
     </form>
 
     <div class="button-container">
-        <a href="/pacientes" class="btn-voltar">Voltar</a>
-        <a href="/principal" class="btn-menu">🏠 Menu Principal</a>
+        <a href="/pacientes" class="btn-voltar" th:text="#{msg_voltar}">Voltar</a>
+        <a href="/principal" class="btn-menu" th:text="#{msg_menu_principal}">Menu Principal</a>
     </div>
 </div>
 

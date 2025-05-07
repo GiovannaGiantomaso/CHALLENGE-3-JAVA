@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciar Tratamentos</title>
+    <title th:text="#{msg_gerenciar_tratamentos}">Gerenciar Tratamentos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -90,14 +90,16 @@
 <div class="container">
     <img src="https://img.icons8.com/?size=100&id=14883&format=png&color=6699CC"
          alt="Logo Odontológica" class="logo">
-    <h2>Gerenciar Tratamentos</h2>
+
+    <h2 th:text="#{msg_gerenciar_tratamentos}">Gerenciar Tratamentos</h2>
+
     <div class="menu">
-        <a href="/tratamentos/cadastrar">Cadastrar Novo Tratamento</a>
-        <a href="/tratamentos/listar">Listar Tratamentos</a>
+        <a href="/tratamentos/cadastrar" th:text="#{msg_cadastrar_novo_tratamento}">Cadastrar Novo Tratamento</a>
+        <a href="/tratamentos/listar" th:text="#{msg_listar_tratamentos}">Listar Tratamentos</a>
     </div>
 
     <div class="button-container">
-        <a href="/principal" class="btn-voltar"> Voltar</a>
+        <a href="/principal" class="btn-voltar" th:text="#{msg_voltar}">Voltar</a>
     </div>
 </div>
 </body>
