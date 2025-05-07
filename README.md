@@ -114,6 +114,47 @@ Relatorio dos pacientes e seus gastos: http://localhost:8080/relatorios/gastos-p
 
 Registros da tabela Auditoria: http://localhost:8080/auditoria
 
+## Monitoramento com Spring Boot Actuator
+
+O projeto implementa monitoramento interno utilizando o **Spring Boot Actuator**, que expõe diversos endpoints úteis para acompanhar o estado da aplicação, métricas de uso, logs, propriedades de ambiente e muito mais.
+
+### Endpoints Disponíveis para o Spring Boot Actuator
+
+> Base padrão: `http://localhost:8080/actuator`
+
+| Endpoint                          | Descrição                                                                 |
+|----------------------------------|---------------------------------------------------------------------------|
+| `/actuator`                      | Lista todos os endpoints do Actuator.                                     |
+| `/actuator/health`               | Verifica se a aplicação está saudável (`UP`, `DOWN`, etc).                |
+| `/actuator/info`                 | Exibe informações da aplicação (nome, descrição, versão).                 |
+| `/actuator/metrics`             | Lista todas as métricas disponíveis.                                      |
+| `/actuator/metrics/{nome}`       | Detalha a métrica especificada (ex: `jvm.memory.used`).                  |
+| `/actuator/env`                  | Mostra todas as variáveis de ambiente da aplicação.                      |
+| `/actuator/env/{nome}`           | Exibe o valor de uma propriedade específica.                             |
+| `/actuator/beans`                | Lista todos os beans do contexto Spring.                                 |
+| `/actuator/loggers`              | Permite alterar níveis de log em tempo de execução.                      |
+| `/actuator/threaddump`           | Exibe o dump atual das threads da JVM.                                   |
+| `/actuator/mappings`             | Lista todos os endpoints da aplicação e seus mapeamentos.                |
+| `/actuator/scheduledtasks`       | Exibe tarefas agendadas via `@Scheduled` (se houver).                    |
+| `/actuator/conditions`           | Mostra os beans ativados/desativados pela auto-configuração.             |
+| `/actuator/configprops`          | Exibe propriedades configuradas agrupadas por classe.                    |
+
+### Configuração no `application.properties`
+
+```properties
+# Identidade da aplicação
+spring.application.name=OdontoPrev
+info.app.name=OdontoPrev
+info.app.description=Sistema de Gerenciamento Odontológico
+info.app.version=1.0.0
+
+# Exposição dos endpoints
+management.endpoints.web.exposure.include=*
+management.endpoint.health.show-details=always
+management.info.env.enabled=true
+management.endpoint.info.enabled=true
+
+
 ###  Configuração do Banco de Dados
 
 spring.application.name=Odontoprev
