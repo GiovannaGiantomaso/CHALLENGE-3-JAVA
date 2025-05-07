@@ -25,7 +25,7 @@ Giovanna Lima | RM553369
 
 Rebeca Lopes | RM553764
 
-Lorenzo Augusto | RM553941
+Felipe Arcanjo | RM554018
 
 ## LINK DO VÍDEO
 
