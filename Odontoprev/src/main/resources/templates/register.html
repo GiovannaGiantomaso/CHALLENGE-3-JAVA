@@ -105,7 +105,11 @@
         <button type="submit"><i class="fa-solid fa-check"></i> <span th:text="#{msg_cadastrar_19}">Cadastrar</span></button>
     </form>
 
-    <p style="margin-top: 20px;"><span th:text="#{msg_j_possui_uma_conta_fa_a_login_aqui_20}">Já possui uma conta? Faça login aqui</span></p>
+    <p style="margin-top: 20px;">
+        <span th:text="#{msg_j_possui_uma_conta_62}">Já possui uma conta?</span>
+        <a th:href="@{/login}" th:text="#{msg_fazer_login_5}">Faça login aqui</a>
+    </p>
+
 </div>
 </body>
 </html>

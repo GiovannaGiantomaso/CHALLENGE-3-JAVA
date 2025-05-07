@@ -119,7 +119,11 @@
     <div th:if="${erroMensagem}" class="message">[[${erroMensagem}]]</div>
     <div th:if="${logoutMensagem}" class="logout-message">[[${logoutMensagem}]]</div>
 
-    <p style="margin-top: 20px;"><span th:text="#{msg_ainda_n_o_possui_conta_cadastre_se_aqui_60}">Ainda não possui conta? Cadastre-se aqui</span></p>
+    <p style="margin-top: 20px;">
+        <span th:text="#{msg_ainda_n_o_possui_conta_61}">Ainda não possui conta?</span>
+        <a th:href="@{/register}" th:text="#{msg_cadastre_se_6}">Cadastre-se aqui</a>
+    </p>
+
 </div>
 </body>
 </html>
