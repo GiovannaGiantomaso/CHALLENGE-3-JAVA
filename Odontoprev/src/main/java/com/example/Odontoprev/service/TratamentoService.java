@@ -16,12 +16,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+
 public class TratamentoService {
 
     private static final Logger logger = LoggerFactory.getLogger(TratamentoService.class);
 
     @Autowired
     private TratamentoRepository tratamentoRepository;
+
+    @Autowired
+    private TratamentoProducer tratamentoProducer;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -44,25 +48,39 @@ public class TratamentoService {
         if (StringUtils.isBlank(tratamento.getDescricao()) ||
                 StringUtils.isBlank(tratamento.getTipo()) ||
                 tratamento.getCusto() == null) {
-
             logger.error("Erro: Campos obrigatórios não preenchidos.");
             throw new IllegalArgumentException("Todos os campos são obrigatórios.");
         }
 
-        return tratamentoRepository.save(tratamento);
+        boolean isUpdate = tratamento.getId() != null && tratamentoRepository.existsById(tratamento.getId());
+
+        Tratamento salvo = tratamentoRepository.save(tratamento);
+
+        if (isUpdate) {
+            tratamentoProducer.enviarAtualizacao(salvo);
+        } else {
+            tratamentoProducer.enviarCriacao(salvo);
+        }
+
+        return salvo;
     }
 
     @Transactional
     public void deletar(Long id) {
-        if (!tratamentoRepository.existsById(id)) {
+        Optional<Tratamento> tratamentoOpt = tratamentoRepository.findById(id);
+        if (tratamentoOpt.isEmpty()) {
             logger.error("Erro: Tentativa de deletar tratamento inexistente (ID={})", id);
             throw new RuntimeException("Tratamento não encontrado.");
         }
 
         try {
+            Tratamento tratamento = tratamentoOpt.get();
             logger.info("Tentando excluir tratamento com ID={}", id);
             tratamentoRepository.deleteById(id);
             tratamentoRepository.flush();
+
+            tratamentoProducer.enviarExclusao(tratamento);
+
             logger.info("Tratamento com ID={} excluído com sucesso.", id);
         } catch (Exception e) {
             logger.error("Erro ao excluir tratamento ID={}: {}", id, e.getMessage());
@@ -70,3 +88,4 @@ public class TratamentoService {
         }
     }
 }
+
