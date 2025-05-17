@@ -69,9 +69,9 @@ Maven
 
 Abra o terminal ou Git Bash e execute:
 
-git clone https://github.com/GiovannaGiantomaso/CHALLENGE-3-JAVA.git
+git clone https://github.com/GiovannaGiantomaso/CHALLENGE-4-JAVA.git
 
-cd CHALLENGE-3-JAVA
+cd CHALLENGE-4-JAVA
 
 ### Comece iniciando a aplicação com:
 http://localhost:8080
