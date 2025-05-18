@@ -182,7 +182,7 @@ Ao acessar o painel, é possível:
 - Ver mensagens pendentes ou consumidas
 - Ver como as exchanges estão roteando as mensagens para as filas corretas
 
-### ⚙Comportamento da mensageria:
+### Comportamento da mensageria:
 
 1. Uma entidade (Paciente ou Tratamento) é criada, atualizada ou excluída via interface web.  
 2. O serviço correspondente envia um objeto JSON para a fila vinculada à operação.  
