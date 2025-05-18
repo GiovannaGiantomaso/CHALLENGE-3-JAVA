@@ -13,7 +13,7 @@ Além de oferecer uma plataforma organizada e intuitiva para gestão odontológi
 * Gerenciamento de pacientes e tratamentos odontológicos
 * Registros de auditoria para controle de alterações no banco de dados
 * Relatórios detalhados de gastos e tratamentos de cada paciente
-* Mensageria assíncrona com RabbitMQ (criação, atualização e exclusão de tratamentos)
+* Mensageria assíncrona com RabbitMQ (para Pacientes e Tratamentos)
 * Banco de Dados Oracle com Procedures e Triggers para segurança e auditoria
 
 ## Equipe de Desenvolvimento
@@ -130,28 +130,54 @@ O projeto implementa monitoramento interno utilizando o **Spring Boot Actuator**
 
 ## Mensageria Assíncrona com RabbitMQ
 
-O projeto utiliza RabbitMQ para processar mensagens relacionadas a tratamentos de forma assíncrona. Três filas distintas foram criadas:
+O projeto utiliza o RabbitMQ para realizar comunicação assíncrona entre os serviços da aplicação, enviando e processando mensagens nas operações de **criação**, **atualização** e **exclusão** de dados das entidades `Paciente` e `Tratamento`.
 
-* `tratamento.create`: Recebe mensagens de novos tratamentos cadastrados
-* `tratamento.update`: Recebe mensagens de tratamentos atualizados
-* `tratamento.delete`: Recebe mensagens de tratamentos excluídos
+### Filas utilizadas por entidade
 
+#### Entidade `Paciente`:
+- `paciente.create`: mensagens de pacientes recém-cadastrados  
+- `paciente.update`: mensagens de pacientes atualizados  
+- `paciente.delete`: mensagens de pacientes excluídos  
 
-### Acesso ao painel RabbitMQ:
+#### Entidade `Tratamento`:
+- `tratamento.create`: mensagens de tratamentos cadastrados  
+- `tratamento.update`: mensagens de tratamentos atualizados  
+- `tratamento.delete`: mensagens de tratamentos excluídos  
 
-* URL: http://localhost:15672
-* Usuário: guest
-* Senha: guest
+Cada ação envia uma mensagem JSON para a fila apropriada. Os consumidores escutam essas filas e realizam o processamento adequado, exibindo os dados no console da aplicação.
 
-Ao acessar o painel, você pode monitorar mensagens nas filas, ver a troca entre exchanges e filas, e confirmar o consumo das mensagens.
+### Exemplo de saída no console:
 
-### Comportamento das mensagens:
+🟢 [PACIENTE CRIADO]
+ID: 96
+Nome: TESTE PACIENTE
+Email: TESTEPACI@GMAIL.COM
+Telefone: 11984750909
 
-Quando um tratamento é criado, atualizado ou deletado:
+🟡 [TRATAMENTO ATUALIZADO]
+ID: 48
+Descrição: Clareamento Dental
+Tipo: Estético
+Custo: R$ 270.0
 
-* A mensagem é convertida para JSON e enviada a uma fila.
-* O consumidor escuta a fila correspondente.
-* A mensagem é processada e logada no console.
+Essas mensagens são úteis para rastreabilidade, auditoria e integração futura com outros sistemas ou microsserviços.
+
+### Acesso ao painel do RabbitMQ:
+
+- URL: http://localhost:15672  
+- Usuário: `guest`  
+- Senha: `guest`
+
+Ao acessar o painel, é possível:
+- Monitorar o tráfego nas filas
+- Ver mensagens pendentes ou consumidas
+- Ver como as exchanges estão roteando as mensagens para as filas corretas
+
+### ⚙Comportamento da mensageria:
+
+1. Uma entidade (Paciente ou Tratamento) é criada, atualizada ou excluída via interface web.  
+2. O serviço correspondente envia um objeto JSON para a fila vinculada à operação.  
+3. O consumidor consome a mensagem da fila, processa e exibe os dados no console em tempo real.
 
 ### Configuração no `application.properties`
 
