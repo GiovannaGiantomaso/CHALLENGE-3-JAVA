@@ -170,13 +170,10 @@ management.endpoint.info.enabled=true
 
 ### Configuração RabbitMQ (`application.properties`)
 
-```properties
 spring.rabbitmq.host=localhost
 spring.rabbitmq.port=5672
 spring.rabbitmq.username=guest
 spring.rabbitmq.password=guest
-```
-
 
 ### Configuração do Banco de Dados
 
@@ -209,6 +206,7 @@ spring.jpa.properties.hibernate.format_sql=true
 logging.level.org.hibernate.SQL=DEBUG
 
 logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+```
 
 ### DIAGRAMA (DAR ZOOM PARA VISUALIZAR):
 
