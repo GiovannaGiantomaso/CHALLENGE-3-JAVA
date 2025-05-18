@@ -149,15 +149,24 @@ Cada ação envia uma mensagem JSON para a fila apropriada. Os consumidores escu
 ### Exemplo de saída no console:
 
 🟢 [PACIENTE CRIADO]
+
 ID: 96
+
 Nome: TESTE PACIENTE
+
 Email: TESTEPACI@GMAIL.COM
+
 Telefone: 11984750909
 
+
 🟡 [TRATAMENTO ATUALIZADO]
+
 ID: 48
+
 Descrição: Clareamento Dental
+
 Tipo: Estético
+
 Custo: R$ 270.0
 
 Essas mensagens são úteis para rastreabilidade, auditoria e integração futura com outros sistemas ou microsserviços.
