@@ -13,6 +13,7 @@ Além de oferecer uma plataforma organizada e intuitiva para gestão odontológi
 * Gerenciamento de pacientes e tratamentos odontológicos
 * Registros de auditoria para controle de alterações no banco de dados
 * Relatórios detalhados de gastos e tratamentos de cada paciente
+* Suporte a internacionalização (i18n) com mensagens em Português, Inglês e Espanhol
 * Mensageria assíncrona com RabbitMQ (para Pacientes e Tratamentos)
 * Banco de Dados Oracle com Procedures e Triggers para segurança e auditoria
 
@@ -127,6 +128,23 @@ O projeto implementa monitoramento interno utilizando o **Spring Boot Actuator**
 | `/actuator/scheduledtasks`       | Exibe tarefas agendadas via `@Scheduled` (se houver).                    |
 | `/actuator/conditions`           | Mostra os beans ativados/desativados pela auto-configuração.             |
 | `/actuator/configprops`          | Exibe propriedades configuradas agrupadas por classe.                    |
+
+## Internacionalização (i18n)
+
+O projeto implementa suporte completo à **internacionalização** utilizando o recurso `messages.properties` do Spring Boot, permitindo a tradução da interface e mensagens em diferentes idiomas.
+
+### Idiomas disponíveis:
+- 🇧🇷 Português (`messages_pt_BR.properties`)
+- 🇺🇸 Inglês (`messages_en.properties`)
+- 🇪🇸 Espanhol (`messages_es.properties`)
+
+### Funcionamento:
+A tradução é feita através da opção que o usuário escolher na interface.  
+As mensagens são exibidas nas views Thymeleaf de forma dinâmica, sem necessidade de alterações no código Java.
+
+### Exemplo de uso no HTML com Thymeleaf:
+```html
+<h1 th:text="#{msg_bem_vindo}">Bem-vindo</h1>
 
 ## Mensageria Assíncrona com RabbitMQ
 
