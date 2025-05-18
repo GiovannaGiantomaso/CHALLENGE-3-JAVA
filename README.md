@@ -145,6 +145,7 @@ As mensagens são exibidas nas views Thymeleaf de forma dinâmica, sem necessida
 ### Exemplo de uso no HTML com Thymeleaf:
 ```html
 <h1 th:text="#{msg_bem_vindo}">Bem-vindo</h1>
+```
 
 ## Mensageria Assíncrona com RabbitMQ
 
