@@ -71,4 +71,44 @@ public class RabbitMQConfig {
         rabbitTemplate.setMessageConverter(messageConverter());
         return rabbitTemplate;
     }
+    // Filas Paciente
+    public static final String PACIENTE_CREATE_QUEUE = "paciente.create";
+    public static final String PACIENTE_UPDATE_QUEUE = "paciente.update";
+    public static final String PACIENTE_DELETE_QUEUE = "paciente.delete";
+
+    // Routing Keys
+    public static final String PACIENTE_CREATE_KEY = "paciente.create.key";
+    public static final String PACIENTE_UPDATE_KEY = "paciente.update.key";
+    public static final String PACIENTE_DELETE_KEY = "paciente.delete.key";
+
+    @Bean
+    public Queue pacienteCreateQueue() {
+        return new Queue(PACIENTE_CREATE_QUEUE, true);
+    }
+
+    @Bean
+    public Queue pacienteUpdateQueue() {
+        return new Queue(PACIENTE_UPDATE_QUEUE, true);
+    }
+
+    @Bean
+    public Queue pacienteDeleteQueue() {
+        return new Queue(PACIENTE_DELETE_QUEUE, true);
+    }
+
+    @Bean
+    public Binding pacienteCreateBinding() {
+        return BindingBuilder.bind(pacienteCreateQueue()).to(exchange()).with(PACIENTE_CREATE_KEY);
+    }
+
+    @Bean
+    public Binding pacienteUpdateBinding() {
+        return BindingBuilder.bind(pacienteUpdateQueue()).to(exchange()).with(PACIENTE_UPDATE_KEY);
+    }
+
+    @Bean
+    public Binding pacienteDeleteBinding() {
+        return BindingBuilder.bind(pacienteDeleteQueue()).to(exchange()).with(PACIENTE_DELETE_KEY);
+    }
+
 }

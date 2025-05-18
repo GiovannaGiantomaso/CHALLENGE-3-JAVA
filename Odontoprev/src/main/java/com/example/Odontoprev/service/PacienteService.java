@@ -15,6 +15,8 @@ public class PacienteService {
 
     @Autowired
     private PacienteRepository pacienteRepository;
+    @Autowired
+    private PacienteProducer pacienteProducer;
 
     @Transactional
     public void salvar(Paciente paciente) {
@@ -35,7 +37,11 @@ public class PacienteService {
                 paciente.getEmail(),
                 paciente.getEndereco().getId()
         );
+
+        Paciente salvo = pacienteRepository.findByEmail(paciente.getEmail());
+        pacienteProducer.enviarCriacao(salvo);
     }
+
 
     public List<Paciente> listarTodos() {
         return pacienteRepository.findAll();
@@ -56,17 +62,22 @@ public class PacienteService {
                 paciente.getEmail(),
                 paciente.getEndereco().getId()
         );
+        pacienteProducer.enviarAtualizacao(paciente);
+
     }
 
     @Transactional
     public void excluir(Long id) {
         Optional<Paciente> paciente = pacienteRepository.findById(id);
-        if (paciente.isPresent()) {
-            pacienteRepository.deletarPaciente(id);
-        } else {
+        if (paciente.isEmpty()) {
             throw new RuntimeException("Paciente não encontrado.");
         }
+
+        Paciente encontrado = paciente.get();
+        pacienteRepository.deletarPaciente(id);
+        pacienteProducer.enviarExclusao(encontrado);
     }
+
 
     @Transactional
     public void adicionarTratamentoPaciente(Long idPaciente, Long idTratamento, Date dataTratamento, String observacoes) {
