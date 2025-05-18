@@ -2,30 +2,25 @@
 ## OdontoPrev - Sistema de Gestão Odontológica
 
 ## Sobre o Projeto
+
 O OdontoPrev é um sistema web desenvolvido para facilitar o gerenciamento de clínicas odontológicas, permitindo o controle eficiente de pacientes, tratamentos e auditorias. O sistema foi criado como parte de um desafio acadêmico, visando o aprimoramento das habilidades em desenvolvimento backend com Spring Boot e a construção de uma interface dinâmica com Thymeleaf.
 
-Além de oferecer uma plataforma organizada e intuitiva para gestão odontológica, o OdontoPrev também incorpora recursos de segurança, auditoria e geração de relatórios, garantindo maior transparência e confiabilidade nos processos no geral.
+Além de oferecer uma plataforma organizada e intuitiva para gestão odontológica, o OdontoPrev também incorpora recursos de segurança, auditoria, mensageria assíncrona com RabbitMQ e geração de relatórios, garantindo maior transparência e confiabilidade nos processos no geral.
 
-Com foco em segurança e eficiência, o sistema oferece:
+### Principais Funcionalidades
 
-Autenticação e autorização via Spring Security
-
-Gerenciamento de pacientes e tratamentos odontológicos
-
-Registros de auditoria para controle de alterações no banco de dados
-
-Relatórios detalhados de gastos e tratamentos de cada paciente
-
-Banco de Dados Oracle com Procedures e Triggers para segurança e auditoria
-
+* Autenticação e autorização via Spring Security
+* Gerenciamento de pacientes e tratamentos odontológicos
+* Registros de auditoria para controle de alterações no banco de dados
+* Relatórios detalhados de gastos e tratamentos de cada paciente
+* Mensageria assíncrona com RabbitMQ (criação, atualização e exclusão de tratamentos)
+* Banco de Dados Oracle com Procedures e Triggers para segurança e auditoria
 
 ## Equipe de Desenvolvimento
 
-Giovanna Lima | RM553369
-
-Rebeca Lopes | RM553764
-
-Felipe Arcanjo | RM554018
+* Giovanna Lima | RM553369
+* Rebeca Lopes | RM553764
+* Felipe Arcanjo | RM554018
 
 ## LINK DO VÍDEO
 
@@ -35,33 +30,27 @@ https://youtu.be/XJyyjwjjNSs
 
 ### Backend:
 
-Java 17
-
-Spring Boot 3.4.3
-
-Spring Security (Autenticação e Autorização)
-
-Spring Data JPA (Persistência de dados)
-
-Spring Boot Actuator (Monitoramento e métricas)
-
+* Java 17
+* Spring Boot 3.4.3
+* Spring Security
+* Spring Data JPA
+* Spring Boot Actuator
+* RabbitMQ
 
 ### Frontend:
 
-Thymeleaf (Template Engine para renderização de páginas dinâmicas)
-Bootstrap & CSS (Estilização da interface)
+* Thymeleaf (Template Engine para renderização de páginas dinâmicas)
+* Bootstrap & CSS (Estilização da interface)
 
 ### Banco de Dados:
 
-Oracle Database
-
-Stored Procedures e Triggers (Gerenciamento de auditoria e relatórios)
+* Oracle Database
+* Stored Procedures e Triggers (Gerenciamento de auditoria e relatórios)
 
 ### Ferramentas Auxiliares:
 
-GitHub
-
-Maven
+* GitHub
+* Maven
 
 ## Como Clonar e Executar o Projeto
 
@@ -139,6 +128,31 @@ O projeto implementa monitoramento interno utilizando o **Spring Boot Actuator**
 | `/actuator/conditions`           | Mostra os beans ativados/desativados pela auto-configuração.             |
 | `/actuator/configprops`          | Exibe propriedades configuradas agrupadas por classe.                    |
 
+## Mensageria Assíncrona com RabbitMQ
+
+O projeto utiliza RabbitMQ para processar mensagens relacionadas a tratamentos de forma assíncrona. Três filas distintas foram criadas:
+
+* `tratamento.create`: Recebe mensagens de novos tratamentos cadastrados
+* `tratamento.update`: Recebe mensagens de tratamentos atualizados
+* `tratamento.delete`: Recebe mensagens de tratamentos excluídos
+
+
+### Acesso ao painel RabbitMQ:
+
+* URL: http://localhost:15672
+* Usuário: guest
+* Senha: guest
+
+Ao acessar o painel, você pode monitorar mensagens nas filas, ver a troca entre exchanges e filas, e confirmar o consumo das mensagens.
+
+### Comportamento das mensagens:
+
+Quando um tratamento é criado, atualizado ou deletado:
+
+* A mensagem é convertida para JSON e enviada a uma fila.
+* O consumidor escuta a fila correspondente.
+* A mensagem é processada e logada no console.
+
 ### Configuração no `application.properties`
 
 ```properties
@@ -154,8 +168,17 @@ management.endpoint.health.show-details=always
 management.info.env.enabled=true
 management.endpoint.info.enabled=true
 
+### Configuração RabbitMQ (`application.properties`)
 
-###  Configuração do Banco de Dados
+```properties
+spring.rabbitmq.host=localhost
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=guest
+spring.rabbitmq.password=guest
+```
+
+
+### Configuração do Banco de Dados
 
 spring.application.name=Odontoprev
 
