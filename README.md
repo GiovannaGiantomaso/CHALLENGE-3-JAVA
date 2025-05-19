@@ -64,7 +64,21 @@ git clone https://github.com/GiovannaGiantomaso/CHALLENGE-4-JAVA.git
 cd CHALLENGE-4-JAVA
 
 ### Comece iniciando a aplicação com:
-http://localhost:8080
+Acesse: http://localhost:8080
+
+**Antes de iniciar a aplicação, certifique-se de que o RabbitMQ esteja instalado e em execução localmente.**
+
+#### Para garantir o funcionamento da mensageria com RabbitMQ:
+
+Passos para instalação local (Windows):
+1. Instale o **Erlang OTP**: https://www.erlang.org/downloads  
+2. Instale o **RabbitMQ Server**: https://www.rabbitmq.com/install-windows.html  
+3. Após a instalação, abra o `services.msc` e **inicie o serviço RabbitMQ**.
+
+Verifique se o RabbitMQ está rodando:
+- Acesse o painel de gerenciamento (se habilitado): http://localhost:15672  
+  - Usuário: `guest` | Senha: `guest`
+- Confirme se a porta `5672` está ativa
 
 ### Rotas da Aplicação:
 
